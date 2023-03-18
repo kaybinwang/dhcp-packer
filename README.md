@@ -25,7 +25,7 @@ TODO: need to upload to pip
 
 ## Usage
 `dhcp-packer` contains Python objects for each DHCP packet type. These objects
-are designed to be schematized and immutable.
+are designed to be immutable with a rigid typed schema.
 
 ```python
 from dhcp.packets import DhcpDiscover, OperationCode
