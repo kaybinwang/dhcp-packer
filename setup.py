@@ -16,7 +16,9 @@ setup(
     author_email="kaybinwang@gmail.com",
     license='MIT',
     packages=find_packages(),
-    install_requires=[],
+    install_requires=[
+        "typing_extensions",
+    ],
     keywords="dhcp",
     classifiers= [
         "Development Status :: 3 - Alpha",
