@@ -5,15 +5,18 @@ A Python library for serializing and deserializing DHCP packets into Python
 objects.
 
 Note that this library was created for testing purposes. It is not meant to be
-used in production environments or any environment that demands performance and
-stability. I created this library because I manage my own DHCP server at home
-and needed a way to run tests against it in local, staging, and production
+used in production environments or any environment that demands performance
+and/or stability.
+
+I created this library because I manage my own DHCP server at home and needed a
+way to run automated tests against the server in local, staging, and production
 environments.
 
-Special thanks to `hassan` who provided [this
-script](https://code.activestate.com/recipes/577649-dhcp-query/) that the
-library is based off of. Without his work, I probably would've given up much
-earlier on trying to write E2E tests for my DHCP servers.
+Special thanks to `hassane` who provided the
+[script](https://code.activestate.com/recipes/577649-dhcp-query/) that this
+library is based off of. I spent a lot of time looking into how to simulate a
+DHCP client/server interaction. Without his work, I probably would've given up
+much earlier on trying to write E2E tests for my DHCP servers.
 
 ## Installation
 Requires Python 3.7+
