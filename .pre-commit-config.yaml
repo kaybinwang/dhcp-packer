@@ -1,0 +1,88 @@
+repos:
+# yaml linter
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.7.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2', --line-width, '80']
+
+# misc linters
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-ast
+  - id: check-builtin-literals
+  - id: check-case-conflict
+  - id: check-docstring-first
+  - id: check-shebang-scripts-are-executable
+  - id: check-merge-conflict
+  - id: check-json
+  - id: check-toml
+  - id: check-xml
+  - id: check-yaml
+    args: [--allow-multiple-documents]
+  - id: debug-statements
+  - id: destroyed-symlinks
+  - id: detect-private-key
+  - id: end-of-file-fixer
+    exclude: ^LICENSE|\.(html|csv|txt|svg|py)$
+  - id: pretty-format-json
+    args: [--autofix, --no-ensure-ascii, --no-sort-keys]
+  - id: requirements-txt-fixer
+  - id: trailing-whitespace
+    args: [--markdown-linebreak-ext=md]
+    exclude: \.(html|svg)$
+
+# python formatters
+- repo: https://github.com/PyCQA/isort
+  rev: 5.11.5
+  hooks:
+  - id: isort
+    name: isort
+    args: [--profile=black]
+
+- repo: https://github.com/psf/black
+  rev: 23.1.0
+  hooks:
+  - id: black
+    args:
+    - --target-version=py310
+    types: [python]
+
+- repo: https://github.com/asottile/blacken-docs
+  rev: 1.13.0
+  hooks:
+  - id: blacken-docs
+    additional_dependencies: [black==23.1.0]
+
+# python linters
+- repo: https://github.com/pre-commit/pygrep-hooks
+  rev: v1.10.0
+  hooks:
+  - id: python-check-blanket-noqa
+  - id: python-check-blanket-type-ignore
+  - id: python-check-mock-methods
+  - id: python-no-log-warn
+  - id: python-use-type-annotations
+  - id: rst-backticks
+  - id: rst-directive-colons
+    types: [text]
+  - id: rst-inline-touching-normal
+    types: [text]
+
+- repo: https://github.com/PyCQA/flake8
+  rev: 5.0.4
+  hooks:
+  - id: flake8
+    additional_dependencies:
+    - flake8-2020
+    - flake8-bugbear
+    - flake8-comprehensions
+    - flake8-docstrings
+    - flake8-implicit-str-concat
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.1.1
+  hooks:
+  - id: mypy

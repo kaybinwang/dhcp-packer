@@ -1,0 +1,5 @@
+[flake8]
+max-line-length = 88
+# D100-D107: Missing docstrings
+ignore = D100
+per-file-ignores = tests/**:D100,D101,D102,D103,D104,D105,D106,D107
