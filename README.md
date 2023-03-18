@@ -65,11 +65,11 @@ from dhcp.packets import DhcpDiscover, OperationCode
 from dhcp.utils import endian
 import socket
 
-# open a socket on port 68 and listen to broadcasts
+# create a socket
 dhcps = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 dhcps.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 try:
-    # send & receive on port 68
+    # listen to broadcasts on port 68
     dhcps.bind(("", 68))
 
     # serialize the discover packet and broadcast on port 67
@@ -86,6 +86,7 @@ try:
     while True:
         data = dhcps.recv(1024)
         offer = DhcpOffer.unpack(data, endian.BIG)
+        # return the first offer for our transaction ID
         if offer.transaction_id == discover.transaction_id:
             return offer
 finally:
